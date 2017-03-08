@@ -1,0 +1,11 @@
+angular.module('resume.components', [])
+/* Resume components */
+   .component('navigator',              require('./navigator/navigator.component.js'))
+   .component('centerHeader',           require('./centerHeader/centerHeader.component.js'))
+   .component('content',                require('./content/content.component.js'))
+   .component('about',                  require('./about/about.component.js'))
+   .component('skills',                 require('./skills/skills/skills.component.js'))
+   .component('skill',                  require('./skills/skill/skill.component.js'))
+   .component('work',                   require('./work/work.component.js'))
+   .component('education',              require('./education/education.component.js'))
+   .component('contact',                require('./contact/contact.component.js'))

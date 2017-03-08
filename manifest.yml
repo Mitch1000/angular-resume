@@ -1,0 +1,13 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: 
+  name: 
+  hosts:
+    - ''
+    - '*'
+  disk_quota: 1024M
+  buildpack:   
+  env:
+    RESUME_SERVER: 

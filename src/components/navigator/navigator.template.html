@@ -1,0 +1,37 @@
+<header class="navbar navbar-default navbar-fixed-top navbar-inner" >
+  <nav role="navigation">
+    <center>
+      <div class="navbar-container">
+        <ul class="nav navbar-nav">
+          <li class="nav-item navbar-item-{{$index}}" 
+              ng-repeat="choice in $ctrl.items track by choice.id" 
+              ng-class="{'navbar-brand-selected': choice.link == $ctrl.currentNavItemLink, 'no-nav-item': $ctrl.isItemSelected()}"
+              ng-click="$ctrl.navigate(choice.link)">
+              
+            <a class="navbar-button navbar-brand" role="button" >
+              {{choice.text }}
+            </a>
+
+          </li>
+
+          <li class="nav-choice nav-selector">
+            <a>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </center>
+  </nav>
+</header>
+
+<div ng-repeat="item in $ctrl.items">
+  <div class="content-container">
+    <div class="content-drop-down" ng-click="$ctrl.closeNav = true" ng-style="$ctrl.styleObject(item.link)">
+      <content ng-if="item.show"  
+      id="{{item.link}}"
+      content-name="{{item.text}}"
+      component="{{item.link}}">
+      </content>
+    </div>
+  </div>
+</div>
