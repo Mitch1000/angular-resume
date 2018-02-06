@@ -9,16 +9,18 @@
     templateUrl: './components/navigator/navigator.template.html'
   };
 
-  navigatorController.$inject = ['$templateCache','$document', '$scope', '$timeout'];
-  function navigatorController ($templateCache, $document, $scope, $timeout) {
+  navigatorController.$inject = ['$templateCache','$document', '$scope', '$timeout', 'hslColorGenerator'];
+  function navigatorController ($templateCache, $document, $scope, $timeout, hslColorGenerator) {
     this.$onChanges = function (changes) {
       if (changes.closeNav.currentValue) this.navigate(this.currentNavItemLink);
     };
 
     this.$onInit = () => {
+      this.selectedItemIndex = 2;
+      this.selectedNavItemColors = [];
       let previousItemLink = 'closed';
 
-      this.navigate = ( linkItem ) => {
+      this.navigate = ( linkItem, itemIndex ) => {
         let isSecondClick = this.currentNavItemLink === linkItem
 
         let view = this;
@@ -43,6 +45,7 @@
 
         const switchDropDown = () => {
           let currentItem = view.items.find((item) => item.link === linkItem );
+          this.selectedItemIndex = itemIndex;
 
           view.currentNavItemLink = linkItem;
           currentItem.show = true;
@@ -115,6 +118,18 @@
       this.isItemSelected = () => {
         return !this.items.map((item) => item.link ).includes(this.currentNavItemLink);
       };
+
+      let selectedHues = [];
+      const randomBorderColor = () => {
+        let randomColor = hslColorGenerator.generateColor(30, 40, 9, selectedHues);
+        return {'background-color': hslColorGenerator.colorToString(randomColor)};
+      };
+
+      this.randomBorderColorStyles = [];
+      this.items.forEach(() => {
+        this.randomBorderColorStyles.push(randomBorderColor())
+      });
+
     }
   }
 }());

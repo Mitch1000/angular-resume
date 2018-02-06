@@ -6,16 +6,18 @@
           <li class="nav-item navbar-item-{{$index}}" 
               ng-repeat="choice in $ctrl.items track by choice.id" 
               ng-class="{'navbar-brand-selected': choice.link == $ctrl.currentNavItemLink, 'no-nav-item': $ctrl.isItemSelected()}"
-              ng-click="$ctrl.navigate(choice.link)">
+              ng-click="$ctrl.navigate(choice.link, $index)">
               
-            <a class="navbar-button navbar-brand" role="button" >
+            
+            <a class="navbar-button navbar-brand" role="button"  >
               {{choice.text }}
+              <div class="nav-underline" ng-style="{{$ctrl.randomBorderColorStyles[$index]}}"></div>
             </a>
 
           </li>
 
           <li class="nav-choice nav-selector">
-            <a>
+            <a ng-style="$ctrl.randomBorderColorStyles[$ctrl.selectedItemIndex]">
             </a>
           </li>
         </ul>
@@ -28,7 +30,7 @@
   <div class="content-container">
     <div class="content-drop-down" ng-click="$ctrl.closeNav = true" ng-style="$ctrl.styleObject(item.link)">
       <content ng-if="item.show"  
-      id="{{item.link}}"
+      id="{{item.link}}-container"
       content-name="{{item.text}}"
       component="{{item.link}}">
       </content>

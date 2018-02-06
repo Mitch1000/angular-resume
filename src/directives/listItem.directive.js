@@ -13,15 +13,15 @@
     let listItems = $element[0].children;
 
     let selectedHues = [];
-    Object.values(listItems).forEach((listItem, iterator) => {
 
+    Object.values(listItems).forEach((listItem, iterator) => {
       let listBullet = document.createElement('span');  
       listBullet.classList.add('list-bullet');
       listBullet.innerHTML = iterator + 1; 
 
       listItem.insertBefore(listBullet, listItem.firstChild); 
 
-      let randomColor = hslColorGenerator.generateColor(93, 96, 18, selectedHues);
+      let randomColor = hslColorGenerator.generateColor(93, 96, 9, selectedHues);
       let listItemDOMElement = angular.element(listItem);
 
       if(!listItemDOMElement) return;
