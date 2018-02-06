@@ -1,13 +1,49 @@
-h3 {
-  margin-left: 1.7em;
-  font: bold 1.7em/1.5em Helvetica, Serif;
-  color: #383337;
-  margin-bottom: 0px;
+div.list-headers {
+  display: flex;
+  margin-left: 40px;
   width: 100%;
+  flex-wrap: wrap;
+  font: bold 1.4em/1.5em Helvetica, Serif;
+}
+
+div.list-headers > h3 {
+  color: #383337;
+  margin-bottom: 2%;
+  width: 65%;
+  display: flex;
+  margin-right: 5%;
+}
+
+@media (max-width: 360px) {
+  div.sub-text {
+    font: bold 0.8em/1.5em Helvetica, Serif !important;
+  }
+}
+
+@media (max-width: 1040px) {
+  div.list-headers {
+    font: bold 1.2em/1.5em Helvetica, Serif;
+  }
+}
+
+
+@media (max-width: 600px) {
+  div.list-headers {
+    font: bold 1.0em/1.5em Helvetica, Serif;
+  }
+
+  div.list-headers > h3 {
+    font: bold 1em/1.5em Helvetica, Serif;
+  }
+
+  div.sub-text > h3 {
+    font: bold 1em/1.5em Helvetica, Serif !important;
+  }
+
 }
 
 ol.skill > li{
-  padding: 0.6em 0.6em 0.6em 0;
+  padding: 0.6em 0 0.6em 0;
   border-bottom: 1px dashed #ccc;
   list-style: none;
   display: flex;
@@ -63,7 +99,6 @@ ol.skill > li:nth-child(7) > .list-bullet {
   transform: rotate(7deg);
 }
 
-
 ol.skill > li > .list-bullet {
   content: counter(li);
   counter-increment: li;
@@ -80,24 +115,43 @@ ol.skill > li > .list-bullet {
   margin-left: -57px;
 }
 
-span.sub-text {
-  font: bold italic 0.9em/1.5em Helvetica, Serif;
-  float: right;
-  border-bottom-color: rgba(56,51,55,0.8) !important;
+div.sub-text {
+  display: flex;
+  align-items: flex-end;
+  width: 30%;
+  justify-content: right;
+  margin-top: 2%;
+}
+
+div.sub-text > h3 {
+  font-style: italic;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-bottom-color: rgba(56,51,55) !important;
   border-bottom: solid;
 }
 
 .degree-title {
-  width: 100%;
-  font: bold 0.9em/1.5em Helvetica, Serif;
+  width: 100% !important;
   padding-bottom: 0.2em;
+}
+
+.school-title.sub-text {
+  width: 45% !important;
+  margin-right: 0% !important;
+}
+
+.school-title > h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .school-title {
   margin-top: 0.2em;
-  font: bold italic 0.9em/1.5em Helvetica, Serif;
+  width: 50%;
+  margin-right: 5%;       
 }
 
 div.list-container {
-  width: 92%;
+  width: 94%;
 }

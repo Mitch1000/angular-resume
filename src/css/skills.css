@@ -27,6 +27,18 @@
   font-size: 16pt;
 }
 
+@media (max-width: 1040px) {
+  .skill{
+    font-size: 14pt;
+  }
+}
+
+@media (max-width: 600px) {
+  .skill{
+    font-size: 12pt;
+  }
+}
+
 .percentage {
   color: #E85D75;
   font-size: 15pt;
