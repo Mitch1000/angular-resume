@@ -1,128 +1,133 @@
 <div class="content-cop">
   <form>
-    <div class="group fade-in-items">      
+    <div class="group">      
+      <div class="icon-container">
+        <i class="fa fa-user-circle-o"></i>
+      </div>
       <input type="text" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label> <i class="fa fa-user-circle-o"></i> Name</label>
+        <label><span class="input-label-text">Name</span></label>
+      </input>
+      <div class="input-bar"></div>
     </div>
 
-    <div class="group fade-in-items">      
+    <div class="group">      
+      <div class="icon-container">
+        <i class="fa fa-id-card"></i>
+      </div>
       <input type="text" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label> <i class="fa fa-id-card"></i> Organization</label>
+        <label><span class="input-label-text">Organization</span></label>
+      </input>
+      <div class="input-bar"></div>
     </div>
       
-    <div class="group fade-in-items">      
+    <div class="group">      
+      <div class="icon-container">
+        <i class="fa fa-envelope-o"></i>
+      </div>
       <input type="text" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label> <i class="fa fa-envelope-o"></i> Email</label>
+        <label> <span class="input-label-text">Email Address</span></label>
+      </input>
+      <div class="input-bar"></div>
     </div>
 
-    <div class="fade-in-items">
+    <div class="email-container">
+      <div class="email-icon-placeholder"></div>
       <textarea ng-model="$ctrl.content" class="skill email" type="text"></textarea>
     </div>
 
-    <button ng-click="$ctrl.sendMail() fade-in-items">
-      <center class="strong skill ">Submit</center>
-    </button>
+    <div class="text-center">
+      <button class="mat-button" ng-click="$ctrl.sendMail()">
+        <div class="download-btn">
+          <center>Submit</center>
+        </div>
+      </button>
+    </div>
   </form>
 
   
 </div>
 
 <style scope>
+  .icon-container {
+    display: flex; 
+    width: 35px; 
+    min-width: 35px; 
+    font-size: 16pt;
+    align-items: center;
+  }
+
 /* form starting stylings ------------------------------- */
-  .group                    { 
-    position:relative; 
-    margin-bottom:45px; 
+  .group { 
+    position: relative; 
+    margin-top: 35px; 
+    display: flex;
   }
-  input                           {
-    font-size:18px;
-    padding:10px 10px 10px 5px;
-    display:block;
-    width:100%;
-    border:1px solid black;
+
+  input {
+    font-size: 18px;
+    padding: 5px 0px 10px 5px;
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+    transition: all 0.4s;
+    opacity: 0.9;
   }
-  input:focus             { outline:none; }
+
+  input:focus { 
+    outline:none; 
+  }
   
   /* LABEL ======================================= */
-  label                            {
-    color:#999; 
-    font-size:18px;
-    font-weight:normal;
-    position:absolute;
-    pointer-events:none;
-    left:5px;
-    top:10px;
-    transition:0.2s ease all; 
-    -moz-transition:0.2s ease all; 
-    -webkit-transition:0.2s ease all;
+  label {
+    color: #999; 
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 40px;
+    top: 10px;
+    transition: 0.4s ease all; 
+    width: 100%;
   }
   
   /* active state */
-  input:focus ~ label, input:valid ~ label                {
-    top:-20px;
-    font-size:14px;
-    color:black;
+  input:focus ~ label, input:valid ~ label{
+    top: -28px;
+    font-size: 16px;
+    color: black;
   }
-  
-  /* BOTTOM BARS ================================= */
-  .bar    { position:relative; display:block; width:100%; }
-  .bar:before, .bar:after         {
-    content:'';
-    height:1px; 
-    width:0;
-    bottom:1px; 
-    position:absolute;
-    background:black; 
-    transition:0.2s ease all; 
-    -moz-transition:0.2s ease all; 
-    -webkit-transition:0.2s ease all;
+
+  div.input-bar {
+    transform: scaleX(0);
+    margin-left: 35px;
+    content: '';
+    height: 2px; 
+    width: calc(100% - 35px);
+    bottom: 1px; 
+    position: absolute;
+    background: black; 
+    transition: 0.4s ease all; 
   }
-  .bar:before {
-    left:50%;
-  }
-  .bar:after {
-    right:50%; 
-  }
-  
+
   /* active state */
-  input:focus ~ .bar:before, input:focus ~ .bar:after {
-    width:50%;
+  input:focus ~ .input-bar {
+    transform: scaleX(1);
   }
-  
-  /* HIGHLIGHTER ================================== */
-  .highlight {
-    position:absolute;
-    height:60%; 
-    width:100px; 
-    top:25%; 
-    left:0;
-    pointer-events:none;
-    opacity:0.5;
+
+  .email-icon-placeholder {
+    display: flex;
+    width: 35px;
   }
-  
-  /* active state */
-  input:focus ~ .highlight {
-    -webkit-animation:inputHighlighter 0.3s ease;
-    -moz-animation:inputHighlighter 0.3s ease;
-    animation:inputHighlighter 0.3s ease;
+
+  .email-container {
+    margin-top: 35px; 
+    display: flex;
+    width: 100%;
   }
-  
-  /* ANIMATIONS ================ */
-  @-webkit-keyframes inputHighlighter {
-    from { background:black; }
-    to    { width:0; background:transparent; }
-  }
-  @-moz-keyframes inputHighlighter {
-    from { background:black; }
-    to    { width:0; background:transparent; }
-  }
-  @keyframes inputHighlighter {
-    from { background:black; }
-    to    { width:0; background:transparent; }
+
+  .email {
+    width: 100%;
+    height: 220px !important;
+    border: solid 1px black;
   }
 <style>
