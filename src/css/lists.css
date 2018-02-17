@@ -4,20 +4,14 @@ div.list-headers {
   width: 100%;
   flex-wrap: wrap;
   font: bold 1.4em/1.5em Helvetica, Serif;
+  color: #383337;
 }
 
 div.list-headers > h3 {
-  color: #383337;
   margin-bottom: 2%;
   width: 65%;
   display: flex;
   margin-right: 5%;
-}
-
-@media (max-width: 360px) {
-  div.sub-text {
-    font: bold 0.8em/1.5em Helvetica, Serif !important;
-  }
 }
 
 @media (max-width: 1040px) {
@@ -29,10 +23,6 @@ div.list-headers > h3 {
 
 @media (max-width: 600px) {
   div.list-headers {
-    font: bold 1.0em/1.5em Helvetica, Serif;
-  }
-
-  div.list-headers > h3 {
     font: bold 1em/1.5em Helvetica, Serif;
   }
 
@@ -104,6 +94,7 @@ ol.skill > li > .list-bullet {
   counter-increment: li;
   background: rgba(56,51,55,0.1);
   border-radius: 1px;
+  min-width: 37px;
   width: 37px;
   text-align: center;
   font: italic bold 1em/1.5em Georgia, Serif;
@@ -121,6 +112,7 @@ div.sub-text {
   width: 30%;
   justify-content: right;
   margin-top: 2%;
+  float: right;
 }
 
 div.sub-text > h3 {
@@ -128,7 +120,7 @@ div.sub-text > h3 {
   margin-top: 0px;
   margin-bottom: 0px;
   border-bottom-color: rgba(56,51,55) !important;
-  border-bottom: solid;
+  border-bottom: solid 0.3vh;
 }
 
 .degree-title {
@@ -144,6 +136,7 @@ div.sub-text > h3 {
 .school-title > h3 {
   margin-top: 0px;
   margin-bottom: 0px;
+  font-style: italic;
 }
 
 .school-title {
