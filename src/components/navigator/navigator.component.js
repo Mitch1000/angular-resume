@@ -20,18 +20,26 @@
       this.selectedNavItemColors = [];
       let previousItemLink = 'closed';
 
+      let timeout;
       this.navigate = ( linkItem, itemIndex ) => {
         let isSecondClick = this.currentNavItemLink === linkItem
+        // prevent the navigator from breaking if you frantically click nav items
+        if (timeout) {
+          timeout = true;
+          return; 
+        }
 
         let view = this;
         const deleteOnDelay = (previousItems) => {
+          timeout = true;
           $timeout(() => {
             if (previousItems) {
               previousItems.forEach((previousItem) => {
                 previousItem.show = false;
               });
             }
-          }, 700).then(() => {
+          }, 500).then(() => {
+            timeout = false;
             previousItemLink = view.currentNavItemLink;
           });
         };
