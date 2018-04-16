@@ -9,8 +9,8 @@
     templateUrl: './components/navigator/navigator.template.html'
   };
 
-  navigatorController.$inject = ['$templateCache','$document', '$scope', '$timeout', 'hslColorGenerator'];
-  function navigatorController ($templateCache, $document, $scope, $timeout, hslColorGenerator) {
+  navigatorController.$inject = ['$templateCache','$document', '$scope', '$timeout', 'hslColorGenerator', '$window'];
+  function navigatorController ($templateCache, $document, $scope, $timeout, hslColorGenerator, $window) {
     this.$onChanges = function (changes) {
       if (changes.closeNav.currentValue) this.navigate(this.currentNavItemLink);
     };
@@ -22,6 +22,8 @@
 
       let timeout;
       this.navigate = ( linkItem, itemIndex ) => {
+        $window.scrollTo(0,0)
+
         let isSecondClick = this.currentNavItemLink === linkItem
         // prevent the navigator from breaking if you frantically click nav items
         if (timeout) {
@@ -69,23 +71,24 @@
         switchDropDown();
       };
 
-      this.styleObject = (linkItem) => {
+      this.styleClass = (linkItem) => {
         let isCurrentNavItem = linkItem === this.currentNavItemLink;
 
-        const styleOptions = { 
-          hidden: { 'top' : '-800px' },
-          present: { 'top' : '48px' }
+        const styleClasses = { 
+          hidden: 'content-hidden',
+          present: 'content-shown'
         };
 
         if ( previousItemLink === 'work' ) {
-          styleOptions.hidden = { 'top': '-1200px' };
+          styleClasses.hidden += ' content-hidden-work';
         } 
 
-        let styleObject = isCurrentNavItem ? styleOptions.present : styleOptions.hidden;
+        let styleClass = isCurrentNavItem ? styleClasses.present : styleClasses.hidden;
 
-        return styleObject;
+        return styleClass;
       };
 
+      const isMobile = $window.innerWidth < 1040;
       this.items = [ 
         { 
             id: 1,
@@ -104,7 +107,7 @@
         { 
             id: 3,
             link: 'work', 
-            text: 'Work Experience',
+            text: isMobile ? 'Work' : 'Work Exprience',
             show: false
         },
 
@@ -138,6 +141,6 @@
         this.randomBorderColorStyles.push(randomBorderColor())
       });
 
-    }
+    };
   }
 }());

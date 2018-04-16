@@ -27,9 +27,10 @@
 </header>
 
 <div ng-repeat="item in $ctrl.items">
-  <div class="content-container">
-    <div class="content-drop-down" ng-click="$ctrl.closeNav = true" ng-style="$ctrl.styleObject(item.link)">
+  <div class="content-container" ng-click="$ctrl.navigate($ctrl.currentNavItemLink)">
+    <div ng-class="'content-drop-down' + ' ' + $ctrl.styleClass(item.link)">
       <content ng-if="item.show"  
+      ng-click="d(); $event.stopPropagation();"
       id="{{item.link}}-container"
       content-name="{{item.text}}"
       component="{{item.link}}">
