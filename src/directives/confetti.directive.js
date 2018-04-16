@@ -191,7 +191,12 @@
 
         birds = [];
         boids = [];
-        for ( var i = 0; i < 200; i ++ ) {
+
+        const isMobile = SCREEN_WIDTH < 1040;
+        const numberOfBoids =  isMobile ? 40 : 200;
+        const boidWidth = isMobile ? 20 : 10;
+        const boidHeight = isMobile ? 20 : 10;
+        for ( var i = 0; i < numberOfBoids; i ++ ) {
             boid = boids[ i ] = new Boid();
             boid.position.x = Math.random() * 400 - 200;
             boid.position.y = Math.random() * 400 - 200;
@@ -201,19 +206,20 @@
             boid.velocity.z = Math.random() * 2 - 1;
             boid.setAvoidWalls( true );
             boid.setWorldSize( 500, 500, 400 );
-            bird = birds[ i ] = new THREE.Mesh( new THREE.BoxBufferGeometry( 10, 10, 2 ), new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );
+            bird = birds[ i ] = new THREE.Mesh( new THREE.BoxBufferGeometry( boidWidth, boidHeight, 2 ), new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );
             bird.phase = Math.floor( Math.random() * 62.83 );
 
             var color = bird.material.color;
             let hslColor = color.getHSL(); 
-            bird.luminosity = hslColor.l
+            bird.luminosity = hslColor.l + (0.95 - hslColor.l)/4;
 
             scene.add( bird );
         }
         renderer = new THREE.CanvasRenderer();
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false);
+        document.addEventListener('touchmove', onDocumentTouchMove, false);
         document.body.appendChild( renderer.domElement );
         //
         window.addEventListener( 'resize', onWindowResize, false );
@@ -223,14 +229,30 @@
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
-    function onDocumentMouseMove( event ) {
-        var vector = new THREE.Vector3( event.clientX - SCREEN_WIDTH_HALF, - event.clientY + SCREEN_HEIGHT_HALF, 0 );
-        for ( var i = 0, il = boids.length; i < il; i++ ) {
-            boid = boids[ i ];
-            vector.z = boid.position.z;
-            boid.repulse( vector );
-        }
+    
+    function onDocumentTouchMove( event ) {
+      let clientX = event.touches[0].clientX;
+      let clientY = event.touches[0].clientY;
+
+      calculateUserMovement(clientX, clientY);
     }
+
+    function onDocumentMouseMove( event ) {
+      const clientX = event.clientX || event.touches[0].clientX
+      const clientY = event.clientY || event.touches[0].clientY
+ 
+      calculateUserMovement(clientX, clientY);
+    }
+
+    function calculateUserMovement(clientX, clientY) {
+      var vector = new THREE.Vector3( clientX - SCREEN_WIDTH_HALF, - clientY + SCREEN_HEIGHT_HALF, 0 );
+      for ( var i = 0, il = boids.length; i < il; i++ ) {
+          boid = boids[ i ];
+          vector.z = boid.position.z;
+          boid.repulse( vector );
+      }
+    }
+
     //
     function animate() {
         requestAnimationFrame( animate );
@@ -242,12 +264,12 @@
             boid.run( boids );
             bird = birds[ i ];
             bird.position.copy( boids[ i ].position );
-            var color = bird.material.color;
-            var colorPercentage =  Math.abs( (( bird.position.z - 500 ) ) / 1000 ) 
+            let color = bird.material.color;
+            let colorPercentage =  Math.abs( (( bird.position.z - 500 ) ) / 1000 ) 
             let hslColor = color.getHSL();
             
-            let luminosity = bird.luminosity + (colorPercentage *  Math.abs( 0.95 - bird.luminosity)); 
-          
+            let luminosity = bird.luminosity + (colorPercentage * Math.abs( 0.95 - bird.luminosity)); 
+            
             color.setHSL(hslColor.h, hslColor.s, luminosity);
             
             bird.rotation.y = Math.atan2( - boid.velocity.z, boid.velocity.x );
