@@ -231,16 +231,21 @@
     }
     
     function onDocumentTouchMove( event ) {
-      let clientX = event.touches[0].clientX;
-      let clientY = event.touches[0].clientY;
+      if(!event.touches) return;
+
+      const clientX = (event.touches[0] || {}).clientX;
+      const clientY = (event.touches[0] || {}).clientY;
+
+      if(!clientX || !clientY) return;
 
       calculateUserMovement(clientX, clientY);
     }
 
     function onDocumentMouseMove( event ) {
-      const clientX = event.clientX || event.touches[0].clientX
-      const clientY = event.clientY || event.touches[0].clientY
+      const clientX = event.clientX;
+      const clientY = event.clientY;
  
+      if(!clientX || !clientY) return;
       calculateUserMovement(clientX, clientY);
     }
 
