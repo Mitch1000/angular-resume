@@ -20,9 +20,5 @@
     'resume.services',
     'resume.models',
     // External Libraries 
-    'ngAnimate',
-    'ngAria',
-    'ngMessages',
-    
   ]);
 }());
