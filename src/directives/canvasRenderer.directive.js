@@ -1087,7 +1087,7 @@
     		_canvas = parameters.canvas !== undefined
     				 ? parameters.canvas
     				 : document.createElement( 'canvas' ),
-    
+
     		_canvasWidth = _canvas.width,
     		_canvasHeight = _canvas.height,
     		_canvasWidthHalf = Math.floor( _canvasWidth / 2 ),
@@ -1221,8 +1221,8 @@
     
     		if ( updateStyle !== false ) {
     
-    			_canvas.style.width = width + 'px';
-    			_canvas.style.height = height + 'px';
+    			_canvas.style.width = '100%';
+    			_canvas.style.height = '93%';
     
     		}
     
