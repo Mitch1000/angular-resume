@@ -14,24 +14,6 @@ div.list-headers > h3 {
   margin-right: 5%;
 }
 
-@media (max-width: 1040px) {
-  div.list-headers {
-    font: bold 1.2em/1.5em Helvetica, Serif;
-  }
-}
-
-
-@media (max-width: 600px) {
-  div.list-headers {
-    font: bold 1em/1.5em Helvetica, Serif;
-  }
-
-  div.sub-text > h3 {
-    font: bold 1em/1.5em Helvetica, Serif !important;
-  }
-
-}
-
 ol.skill > li{
   padding: 0.6em 0 0.6em 0;
   border-bottom: 1px dashed #ccc;
@@ -119,7 +101,7 @@ div.sub-text > h3 {
   font-style: italic;
   margin-top: 0px;
   margin-bottom: 0px;
-  border-bottom-color: rgba(56,51,55) !important;
+  border-bottom-color: rgba(56,51,55) !important; 
   border-bottom: solid 0.3vh;
 }
 
@@ -147,4 +129,48 @@ div.sub-text > h3 {
 
 div.list-container {
   width: 94%;
+}
+
+@media (max-width: 1040px) {
+  div.list-headers {
+    font: bold 1.1em/1.5em Helvetica, Serif;
+  }
+}
+
+@media (max-width: 600px) {
+  div.list-container {
+    width: 100%;
+  }
+
+  div.list-headers{
+    font: bold 1em/1.5em Helvetica, Serif;
+    margin-left: 0px;
+  }
+
+  div.sub-text {
+    width: 100%;
+    margin-top: 8px;
+    justify-content: left;
+  }
+
+  div.sub-text.school-title {
+    justify-content: right;
+  }
+  
+  div.sub-text > h3 {
+    font-size: 1.1em;
+  }
+
+  div.list-headers > h3 {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  span.list-bullet {
+    display: none;
+  }
+
+  ol {
+    padding-left: 0px;
+  }
 }
