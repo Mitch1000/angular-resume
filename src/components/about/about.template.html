@@ -1,14 +1,15 @@
 <div class="content-cop">
   
-  <div class="flex-container fade-in-items">
+  <div class="flex-container fade-in-items about-me">
+    <div class="text-container" ng-class="$ctrl.swapPictureWithText ? 'photo-text-swap' : ''">
+      <p class="skill grey">
+        I am a full-stack web developer who enjoys learning new tech and contributing to the open source community.
+        So far I have worked with technologies such as <span class="grey strong">NodeJS</span>, <span class="grey strong">Ruby on Rails</span>, <span class="grey strong">Angular.js</span>, <span class="grey strong">Vue.js</span> and <span class="grey strong">MySQL</span>.
+        My goal is to find a job where I can express my creativity and make contributions to the web community that are helpful to my peers. 
+      </p>
+    </div>
 
-    <p class="skill grey">
-      I am a full-stack web developer who enjoys learning new tech and contributing to the open source community.
-      So far I have worked with technologies such as <span class="grey strong">NodeJS</span>, <span class="grey strong">Ruby on Rails</span>, <span class="grey strong">Angular.js</span>, <span class="grey strong">Vue.js</span> and <span class="grey strong">MySQL</span>.
-      My goal is to make a contribution to the web community that is helpful to my peers. 
-    </p>
-
-    <div class="picture-box">
+    <div class="picture-box" ng-class="$ctrl.swapPictureWithText ? 'photo-text-swap' : ''">
       <div class="about-me-picture">
         <div alt="Me" class="picture picture-block"></div>
       </div>
@@ -17,7 +18,7 @@
   </div>
 
   <div class="text-center">
-    <button href="../lib/Resume_Mitchell_Drohan.pdf" class="mat-button">
+    <button href="../lib/Resume_Mitchell_Drohan.pdf" class="download mat-button">
       <div class="download-btn">
         <span> 
           <i class="fa fa-download"></i>
@@ -26,5 +27,4 @@
       </div>
     </button>
   </div>
-
 </div>

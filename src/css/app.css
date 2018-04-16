@@ -1,6 +1,7 @@
 @import url("lists.css");
 @import url("navbar.css");
 @import url("skills.css");
+@import url("modal.css");
 
 body {
   overflow-x: hidden;
@@ -31,26 +32,26 @@ body {
 }
 
 .vertical-align {
-   position: absolute;
-   top: 50%;
-   margin-top: -100px;
-   left: 0;
-   width: 100%;
+  position: absolute;
+  top: 50%;
+  margin-top: -100px;
+  left: 0;
+  width: 100%;
 }
 
 .center-block {
-    float: none !important;
-    display: block !important;
-    margin: 0 auto !important;
+  float: none !important;
+  display: block !important;
+  margin: 0 auto !important;
 }
 
 .picture-block {
-    float: none !important;
-    display: block !important;
+  float: none !important;
+  display: block !important;
 }
 
 .intro {
-    margin: 5%;
+  margin: 5%;
 }
 
 .content-underline {
@@ -68,8 +69,6 @@ a.content-heading {
   text-decoration: none;
 }
 
-
-
 .contact {
   margin-bottom: 4%;
   font-size: 18pt;
@@ -77,6 +76,14 @@ a.content-heading {
 
 .download-btn {
   font-size: 13pt;
+}
+
+.download-btn > span > i {
+  padding-right: 2%;
+}
+
+button.download {
+  margin-top: 15px;
 }
 
 .drop-down{
@@ -105,7 +112,6 @@ a.content-heading {
   background-color: #161616 !important;
   color: white !important;
   width: 200px;
-  margin-top: 3%;
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
@@ -146,15 +152,8 @@ md-input-container:not(.md-input-invalid).md-input-focused .fa {
   border-radius: 50%;
   background: rgba(0,0,0,1) url('../img/Me.jpeg');
   background-size: contain;
-  width: 150px;
-  height: 150px;
-}
-
-@media (max-width: 600px) {
-  .picture {
-    width: 100px;
-    height: 100px;
-  }
+  width: 130px;
+  height: 130px;
 }
 
 /*
@@ -230,4 +229,33 @@ hr {
 }
 li:focus, a:focus{
   outline: none;
+}
+
+@media (max-width: 600px) {
+ .text-container {
+    min-width: 100%;
+    opacity: 0;
+    transition: opacity 1.6s;
+  }
+
+  .text-container.photo-text-swap {
+    opacity: 1;
+  }
+
+  .picture-box.photo-text-swap {
+    left: 150%;
+    opacity: 0.0;
+  }
+
+  .flex-container.fade-in-items.about-me {
+    justify-content: inherit;
+  }
+
+  .picture-box {
+    position: absolute; 
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    transition: all 1.6s;
+  }
 }
