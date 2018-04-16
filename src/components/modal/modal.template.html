@@ -1,0 +1,16 @@
+<div class="modal">
+  <div class="modal__backdrop"></div>
+  <div class="modal__block">
+    <header class="modal__header">
+      <h1 class="modal__title">{{ $ctrl.title }} 
+      <i ng-if="!$ctrl.modalFail"  class="fa fa-smile-o"></i> 
+      <i ng-if="$ctrl.modalFail"  class="fa fa-frown-o"></i>
+    </h1> 
+
+      <span class="modal__close" ng-click="$ctrl.closeModal()"> <i class="fa fa-times"></i> </span>
+    </header>
+
+    <div class="modal__content">{{$ctrl.content}}</div>
+  </div>
+</div>
+
