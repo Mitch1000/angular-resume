@@ -11,9 +11,9 @@
   listItem.$inject = ['$element', '$timeout', 'hslColorGenerator'];
   function listItem ($element, $timeout, hslColorGenerator) {
     let listItems = $element[0].children;
-
     let selectedHues = [];
-
+    const isMobile = document.documentElement.clientWidth < 600;
+    
     Object.values(listItems).forEach((listItem, iterator) => {
       let listBullet = document.createElement('span');  
       listBullet.classList.add('list-bullet');
@@ -25,16 +25,20 @@
       let listItemDOMElement = angular.element(listItem);
 
       if(!listItemDOMElement) return;
+
+      const modifiedElement = isMobile ? listItem : listBullet;
       listItemDOMElement.on('mouseenter', () => {
-        listBullet.style.backgroundColor = hslColorGenerator.colorToString(randomColor);
-        listBullet.style.borderWidth = '.2em';
-        listBullet.style.transform = 'scale(1.5)';
+        modifiedElement.style.backgroundColor = hslColorGenerator.colorToString(randomColor);
+        if (isMobile) return;
+        modifiedElement.style.borderWidth = '.2em';
+        modifiedElement.style.transform = 'scale(1.5)';
       });
 
       listItemDOMElement.on('mouseleave', () => {
-        listBullet.style.backgroundColor = 'rgba(56,51,55,0.1)';
-        listBullet.style.borderWidth = '';
-        listBullet.style.transform = '';
+        modifiedElement.style.backgroundColor = isMobile ? 'white' : 'rgba(56,51,55,0.1)';
+        if (isMobile) return;
+        modifiedElement.style.borderWidth = '';
+        modifiedElement.style.transform = '';
       });
     });
   }
