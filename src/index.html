@@ -19,7 +19,7 @@
     <a href="http://www.enable-javascript.com/" class="grey fa fa-frown-o fa-4x"></a>
   </noscript>
 
-  <div class="content" ng-click="$ctrl.closeNav = true" ng-blur="$ctrl.closeNav = false">
+  <div class="content" ng-click="isCloseNavigatorTriggered = true">
     <div ng-if="hasFocus" class="center-block canvas-container">
       <center-header style="z-index:1000;"></center-header>
       <div id="container"canvas-renderer confetti></div>
@@ -27,7 +27,8 @@
   </div>
 
   <navigator
-    close-nav="$ctrl.closeNav">
+    is-close-navigator-triggered="isCloseNavigatorTriggered"
+    reset-nav-state="resetNavState()">
   </navigator>
   <script src="./app.bundle.js"></script>
 </body>

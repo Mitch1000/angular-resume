@@ -3,7 +3,8 @@
 
   module.exports = {
     bindings: {
-      closeNav: '<',
+      isCloseNavigatorTriggered: '<',
+      resetNavState: '&'
     },
     controller: navigatorController,
     templateUrl: './components/navigator/navigator.template.html'
@@ -12,7 +13,9 @@
   navigatorController.$inject = ['$templateCache','$document', '$scope', '$timeout', 'hslColorGenerator', '$window'];
   function navigatorController ($templateCache, $document, $scope, $timeout, hslColorGenerator, $window) {
     this.$onChanges = function (changes) {
-      if (changes.closeNav.currentValue) this.navigate(this.currentNavItemLink);
+      if (!this.currentNavItemLink || this.currentNavItemLink === 'closed') return;
+
+      if (changes.isCloseNavigatorTriggered.currentValue) this.navigate(this.currentNavItemLink);
     };
 
     this.$onInit = () => {
@@ -23,6 +26,7 @@
       let timeout;
       this.navigate = ( linkItem, itemIndex ) => {
         $window.scrollTo(0,0)
+        this.resetNavState();
 
         let isSecondClick = this.currentNavItemLink === linkItem
         // prevent the navigator from breaking if you frantically click nav items
@@ -63,6 +67,7 @@
           deleteOnDelay(previousItems);
         };
 
+        // if the user is attempting to navigate to the same nav item close the dropdown
         if ( isSecondClick && this.currentNavItemLink !== 'closed' ) {
           closeDropDown();
           return;
