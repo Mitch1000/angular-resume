@@ -8,7 +8,7 @@ div.list-headers {
 }
 
 div.list-headers > h3 {
-  margin-bottom: 2%;
+  margin-bottom: 0%;
   width: 65%;
   display: flex;
   margin-right: 5%;
@@ -93,7 +93,6 @@ div.sub-text {
   align-items: flex-end;
   width: 30%;
   justify-content: right;
-  margin-top: 2%;
   float: right;
 }
 
@@ -101,8 +100,6 @@ div.sub-text > h3 {
   font-style: italic;
   margin-top: 0px;
   margin-bottom: 0px;
-  border-bottom-color: rgba(56,51,55) !important; 
-  border-bottom: solid 0.3vh;
 }
 
 .degree-title {
