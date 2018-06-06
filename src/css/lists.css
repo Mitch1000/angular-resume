@@ -92,8 +92,7 @@ div.sub-text {
   display: flex;
   align-items: flex-end;
   width: 30%;
-  justify-content: right;
-  float: right;
+  justify-content: flex-end;
 }
 
 div.sub-text > h3 {
