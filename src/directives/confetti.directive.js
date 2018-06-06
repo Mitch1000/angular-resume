@@ -8,8 +8,18 @@
     }
   };
   
-  confetti.$inject = [];
-  function confetti () {
+  confetti.$inject = ['$window'];
+
+  function confetti ($window) {
+    var hasFocus = true;
+    $window.onfocus = function(){
+      hasFocus = true;
+    }
+
+    $window.onblur = function(){
+      hasFocus = false;
+    }
+
     // Based on http://www.openprocessing.org/visuals/?visualID=6910
     var Boid = function() {
         var vector = new THREE.Vector3(),
@@ -264,6 +274,7 @@
         render();
     }
     function render() {
+        if (!hasFocus) { return; }
         for ( var i = 0, il = birds.length; i < il; i++ ) {
             boid = boids[ i ];
             boid.run( boids );
