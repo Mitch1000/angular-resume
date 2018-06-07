@@ -12,6 +12,11 @@
     this.$onInit = () => {
       this.sendMail = sendMail;
       this.showModal = false;
+      this.isLoading = false;
+
+      this.inputHasValue = (value) => {
+        return value !== undefined && value !== null && value !== '';
+      };
 
       this.closeModal = () => {
         this.showModal = !this.showModal;
@@ -25,16 +30,16 @@
         "email": this.email,
         "subject": this.subject,
         "content": this.content
-      }
+      };
 
-      data = JSON.stringify(data);
+      if (!this.name || !this.companyName || !this.subject || !this.email) return;
 
       const showModal = (success) => {
         let modalData = {}
         if (success) {
           modalData.modalTitle = 'Email Sent';
           modalData.modalFail = false;
-          modalData.modalContent = '';
+          modalData.modalContent = 'You should receive a response shortly.';
         } else {
           modalData.modalTitle = 'Failed to Send Email Due to Server Error.';
           modalData.modalFail = true;
@@ -47,25 +52,13 @@
         this.showModal = !this.showModal;
       };
 
+      this.isLoading = true;
       $http.post('http://159.89.114.62:8080/send_email', data, {headers : {"Content-Type" : "application/json"}}).then((response) => {
-        const clearEmailForm = () => {
-          this.companyName = '';
-          this.name = '';
-          this.email= '';
-          this.subject= '';
-          this.content= '';
-        };
-
-        clearEmailForm()
-        showModal(true)
- 
-        console.log(response);
+        showModal(true);
       }).catch((error) => {
-        showModal(false)
-        console.warn(error);
-      });
-
-
+        showModal(false);
+        console.error(error);
+      }).finally(() => { this.isLoading = false; });
     }
   }
 

@@ -14,8 +14,5 @@
 
   modalController.$inject = [];
   function modalController() {
-     this.$onInit = () => {
-       console.log(this.closeModal)
-     };
   }
 }());
