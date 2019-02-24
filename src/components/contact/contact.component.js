@@ -53,7 +53,7 @@
       };
 
       this.isLoading = true;
-      $http.post('http://159.89.114.62:8080/send_email', data, {headers : {"Content-Type" : "application/json"}}).then((response) => {
+      $http.post('http://167.99.180.42:8080/send_email', data, {headers : {"Content-Type" : "application/json"}}).then((response) => {
         showModal(true);
       }).catch((error) => {
         showModal(false);

@@ -1,0 +1,28 @@
+.resume-button {
+  padding: 0.4em;
+  color: black;
+  border: 1px solid #161616;
+  border-radius: 50px;
+  font-size: 12pt;
+  background-color: white;
+  min-width: 6em;
+  text-align: center;
+  transition: background-color 0.5s, box-shadow 0.25s ease-in-out;
+  cursor: pointer;
+
+  &.large {
+    display: block;
+    margin: 0 auto;
+    min-width: 16em;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 15px 0 rgba(0,0,0,0.15);
+  }
+
+  &.resume-button-prime {
+    border-color: #161616;
+    background-color: #161616;
+    color: white;
+  }
+}

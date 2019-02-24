@@ -3,10 +3,11 @@
   <div class="flex-container fade-in-items about-me">
     <div class="text-container" ng-class="$ctrl.swapPictureWithText ? 'photo-text-swap' : ''">
       <p class="skill grey">
-        I am a full-stack web developer who enjoys learning new tech and applying it to modern,
-        ground-breaking applications. I have experience with web design, code refactoring, peer code reviews
-        and web server configuration. I hope to find a job where I can express my creativity while working with
-        a team to make contributions to the web community.
+       I am a front-end web developer who enjoys learning new tech and applying it to modern applications.
+       My experience includes: web design,
+       code refactoring, peer code reviews and working with front-end frameworks.
+       It is my hope to find a job where I can express my creativity while working with a team
+       to make contributions to the web community. 
       </p>
     </div>
 
@@ -19,7 +20,7 @@
   </div>
 
   <div class="text-center">
-    <button onclick="window.open('../../lib/Resume_Mitchell_Drohan.pdf', '_blank')" class="download mat-button">
+    <button onclick="window.open('../../lib/Resume_Mitchell_Drohan.pdf', '_blank')" class="resume-button download mat-button">
       <div class="download-btn">
         <span> 
           <i class="fa fa-download"></i>
@@ -29,3 +30,7 @@
     </button>
   </div>
 </div>
+<style>
+<style lang="scss" scope>
+  @import '../Buttons/styles/resumeButton.scss';
+</style>

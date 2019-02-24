@@ -1,0 +1,362 @@
+// Dropdown Menus
+// *******************************************
+// -------------------------------------------
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+@mixin vertical-align {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+@mixin justify-center {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.dropdown {
+	position: relative;
+
+	&:hover {
+		.dropdown-module {
+			display: block;
+		}
+	}
+}
+
+.dropdown-btn {
+	display: inline-block;
+	position: relative;
+
+	&.open {
+		.dropdown-module {
+			display: block;
+			min-width: 0;
+			width: 100%; // stretch to fill button
+		}
+
+		.dropdown-module:not(.dropdown-with-arrow) {
+			margin: 2px 0;
+		}
+	}
+}
+
+// For button groups
+.fm-btn-group.open {
+	.dropdown-module {
+		display: block;
+		min-width: 0;
+		width: 100%; // stretch to fill button
+	}
+}
+
+.dropdown-with-arrow {
+	margin-top: 15px;
+}
+
+.dropdown-with-arrow:after {
+	bottom: 100%;
+	right: 10%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.dropdown-with-arrow:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: rgb(255,255,255);
+	border-width: 10px;
+}
+
+.dropdown-module {
+	position: absolute;
+	z-index: 50;
+	top: 100%;
+	min-width: 175px;
+	background-color: white;
+	border: 1px solid rgb(222,226,228);
+	border-radius: 3px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px;
+	list-style: none;
+	display: none;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.1);
+	@include box-sizing(border-box);
+
+	li {
+		&:first-child {
+			border-radius: 3px 3px 0px 0px;
+		}
+
+		&:last-child {
+			border-radius: 0px 0px 3px 3px;
+		}
+
+		&.active {
+			font-weight: 600;
+		}
+	}
+}
+
+.dropdown-module--no-margin {
+	margin: 0px!important;
+}
+
+.dropdown-module-item {
+	width: 100%;
+	font-size: .875rem;
+	color: rgb(110,124,136);
+	font-weight: 300;
+	cursor: pointer;
+	@include transition(background-color .3s);
+
+	&:hover {
+		background-color: rgb(245,245,245);
+	}
+
+	border-bottom: 1px solid rgb(235,235,235);
+
+	a, span {
+		width: 100%;
+		padding: 10px 6px;
+		display: block;
+		text-decoration: none;
+		color: rgb(110,124,136);
+		@include box-sizing(border-box);
+
+		@media (max-width: 420px) {
+			padding: 8px 15px;
+		}
+
+		i {
+			margin-right: 5px;
+		}
+	}
+
+	&:last-child {
+		border-bottom: 0px;
+	}
+}
+
+.dropdown-module-left {
+	left: 0px;
+}
+
+.dropdown-module-right {
+	right: 0px;
+}
+
+
+// Some custom style for user dropdown menu
+// ----------------------------------------
+
+.projects-collaborate-item {
+	@extend .dropdown-module-item;
+
+	border-top: 1px solid rgb(222,226,228);
+}
+
+.user-logout-item {
+	@extend .dropdown-module-item;
+
+	border-top: 1px solid rgb(222,226,228);
+	font-weight: 500;
+}
+
+.personal-stream-item {
+	@extend .dropdown-module-item;
+
+	font-weight: 500;
+}
+
+// Dropdown Basic
+// ----------------------------------------------------------
+
+.dropdown-menu--basic {
+	height: 100%;
+	margin: 0px 15px;
+	@include vertical-align;
+}
+
+.dropdown-menu--wrap {
+	height: 50px;
+	position: relative;
+}
+
+.dropdown-menu--label {
+	float: left;
+	height: 100%;
+	padding-right: 15px;
+	color: rgb(100,100,100);
+	font-weight: 100;
+	@include box-sizing( border-box );
+	@include justify-center;
+}
+
+.dropdown-menu--btn {
+	cursor: pointer;
+	height: 100%;
+	width: 175px;
+	border: 1px solid rgb(220,220,220);
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+	border-radius: 6px;
+	position: relative;
+	float: left;
+	padding: 0px 15px;
+	color: rgb(60,60,60);
+	text-transform: capitalize;
+	@include vertical-align;
+	@include box-sizing( border-box );
+	@include transition( background-color .3s );
+
+	&:hover {
+		background-color: rgb(245,245,245);
+	}
+}
+
+.dropdown-menu--btn-content {
+	width: 100%;
+}
+
+.dropdown-menu--container {
+	width: 175px;
+	position: absolute;
+	box-shadow: 0px 0px 15px rgba(0,0,0,.2);
+	background-color: rgb(255,255,255);
+	border-radius: 6px;
+	top: 0px;
+	right: 0px;
+	opacity: 0;
+	display: none;
+	z-index: 50;
+	font-size: .875rem;
+	color: rgb(160,160,160);
+
+	ul {
+	    margin: 0px;
+	    padding: 10px;
+	    list-style: none;
+	}
+
+	a, span {
+	    padding: 7px 8px;
+	    color: rgb(160,160,160);
+	    font-size: 1rem;
+	    font-weight: 300;
+	    text-decoration: none;
+	    display: block;
+	    @include transition( color .2s );
+	}
+
+	span {
+	    color: rgb(60,60,60);
+	}
+
+	.active {
+	    color: rgb(60,60,60);
+	    font-weight: 400;
+	}
+
+	a:not(.active):hover {
+    	color: rgb(25, 142, 230);
+    }
+}
+
+.dropdown-menu--basic--alt {
+	@extend .dropdown-menu--basic;
+
+	.dropdown-menu--btn {
+		border: 0px;
+		width: auto;
+		color: rgb(255,255,255);
+
+		&:hover {
+			background-color: rgb(30,30,30);
+		}
+
+		span {
+			padding-right: 20px;
+		}
+	}
+
+	.dropdown-menu--container {
+		background-color: rgb(10,10,10);
+
+		a, span {
+		    padding: 8px;
+		    color: rgb(180,180,180);
+		    font-size: 1rem;
+		    font-weight: 300;
+		    text-decoration: none;
+		    display: block;
+		}
+
+		li {
+			border-bottom: 1px solid rgb(50,50,50);
+		}
+
+		li:last-child {
+			border: 0px;
+		}
+
+		.active {
+		    color: rgb(255,255,255);
+		    font-weight: 500;
+		}
+	}
+}
+
+
+// Box drop
+// -----------------------------------
+
+
+.box-drop__list {
+  padding: 0px;
+  list-style: none;
+}
+
+.box-drop__list__item a {
+	padding: 15px 20px 0 20px;
+  font-weight: 300;
+  font-size: .875rem;
+  text-decoration: none;
+  color: rgb(140,140,140);
+  display: block;
+}
+
+.box-drop__list__item a:hover {
+  color: rgb(30,30,30);
+}
+
+.box-drop__list__item span {
+  display: block;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(230,230,230);
+}
+
+.box-drop__list__item:last-of-type span {
+  border-bottom: none;
+}
+

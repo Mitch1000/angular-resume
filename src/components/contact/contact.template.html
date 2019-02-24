@@ -50,7 +50,7 @@
     <div class="group">      
       <div class="submit-button-container">
         <div class="email-icon-placeholder"></div>
-        <button id="submit-button" class="mat-button" ng-click="$ctrl.sendMail();">
+        <button id="submit-button" class="resume-button resume-button-prime large" ng-click="$ctrl.sendMail();">
           <div class="download-btn">
             <center>Send Email</center>
           </div>
@@ -63,7 +63,9 @@
   
 </div>
 
-<style scope>
+<style lang="scss" scope>
+  @import '../Buttons/styles/resumeButton.scss';
+
   .icon-container {
     display: flex; 
     width: 35px; 

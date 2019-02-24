@@ -203,17 +203,17 @@
         boids = [];
 
         const isMobile = SCREEN_WIDTH < 1040;
-        const numberOfBoids =  isMobile ? 40 : 200;
-        const boidWidth = isMobile ? 20 : 10;
-        const boidHeight = isMobile ? 20 : 10;
+        const numberOfBoids =  isMobile ? 40 : 60;
+        const boidWidth = isMobile ? 20 : 20;
+        const boidHeight = isMobile ? 20 : 20;
         for ( var i = 0; i < numberOfBoids; i ++ ) {
             boid = boids[ i ] = new Boid();
             boid.position.x = Math.random() * 400 - 200;
             boid.position.y = Math.random() * 400 - 200;
             boid.position.z = Math.random() * 400 - 200;
-            boid.velocity.x = Math.random() * 2 - 1;
-            boid.velocity.y = Math.random() * 2 - 1;
-            boid.velocity.z = Math.random() * 2 - 1;
+            boid.velocity.x = Math.random() * 1.7 - 1;
+            boid.velocity.y = Math.random() * 1.7 - 1;
+            boid.velocity.z = Math.random() * 1.7 - 1;
             boid.setAvoidWalls( true );
             boid.setWorldSize( 500, 500, 400 );
             bird = birds[ i ] = new THREE.Mesh( new THREE.BoxBufferGeometry( boidWidth, boidHeight, 2 ), new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );

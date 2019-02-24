@@ -1,0 +1,260 @@
+// GOES ON BODY
+// ------------
+.showing-modal {
+  overflow: hidden;
+}
+
+.base-modal-component {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.4);
+  opacity: 0;
+  z-index: 1500;
+  transition: opacity .38s;
+  pointer-events: none;
+}
+
+.base-modal--show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.base-modal-component__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+// Modal Styles
+// --------------------------------------------
+
+.base-modal {
+  position: relative;
+  z-index: 10;
+  width: 450px;
+  max-height: calc(100% - 30px);
+  padding: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 0 1 rgba(0, 0, 0, 1);
+  opacity: 0;
+  transform: scale(0.83);
+  transition: all 0.24s ease-out;
+  margin: 15px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.base-modal--alt {
+  padding: 40px 20px;
+}
+
+.base-modal--lg {
+  padding: 80px 20px;
+}
+
+.base-modal--large-view {
+  width: 800px;
+  height: 500px;
+  margin: 15px;
+}
+
+.base-modal--large-view .base-modal__title {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  padding: 15px;
+  border-bottom: 1px solid rgb(200,200,200)!important;
+  box-sizing: border-box;
+}
+
+.base-modal--show .base-modal {
+  // Immediately scaling this looks bad. Not sure why this
+  // was done.
+  // transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 1em 1.62em rgba(0, 0, 0, 0.15);
+  transition: all 0.38s cubic-bezier(0.38, 0.24, 0.38, 1.62);
+}
+
+.base-modal__header {
+  margin-bottom: 0;
+}
+
+.base-modal__header--alt {
+  margin: 0px;
+}
+
+.base-modal__title {
+  margin: 0px;
+  font-weight: 300;
+  font-size: 1.5em;
+  color: rgb(60,60,60);
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.base-modal__title--alt {
+  text-align: center;
+  padding: 0px;
+}
+
+.base-modal__title--border {
+  border-bottom: 1px solid rgb(220,220,220);
+}
+
+.base-modal__title--sm {
+  padding-top: 2px;
+  font-size: .875em;
+  padding-bottom: 0px;
+}
+
+.base-modal__close {
+  position: absolute;
+  right: 0px;
+  top: 00px;
+  font-size: 1.3em;
+  padding: 10px;
+  color: rgb(120,120,120);
+  z-index: 10;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.base-modal__content--justify {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.base-modal__content--align-top {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.base-modal__content p:not(.modal-comment__body-text) {
+  margin: 0px;
+  font-size: 1em;
+  font-weight: 300;
+  color: rgb(60,60,60);
+}
+
+.base-modal__close:hover {
+  color: rgb(30,30,30);
+}
+
+.base-modal__row {
+  margin: 15px 0px;
+}
+
+.base-modal__media-row {
+  margin: 10px 0;
+}
+
+.base-modal__media-row span {
+  margin: 0px;
+  font-size: .875em;
+}
+
+.modal__icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  color: rgb(30,30,30);
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  margin: 20px auto;
+}
+
+.modal__icon--alt{
+  margin-top: 0px;
+}
+
+.base-modal__footer {
+  margin-top: 30px;
+  padding: 20px 0px 0px 0px;
+  border-top: 1px solid rgb(200,200,200);
+}
+
+.base-modal__footer--empty {
+  padding: 0px;
+}
+
+// Load Mask
+
+.base-modal--preventClick {
+  pointer-events: all;
+
+  .base-modal {
+    pointer-events: none;
+
+    .base-modal__close {
+      display: none;
+    }
+  }
+}
+
+.base-modal__load-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: hsla(0,0%,100%,0.83);
+  -webkit-backdrop-filter: blur(0.24em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: inherit;
+  z-index: 5;
+  text-align: center;
+  transition: opacity .2s;
+  pointer-events: none;
+}
+
+.base-modal__load-mask-desc {
+  font-weight: 300;
+  color: rgb( 60,60,60 );
+}
+
+
+.circle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.62em;
+
+  i {
+    height: 1.62em;
+    width: 1.62em;
+    border-radius: 1em;
+    border: 2px solid #555;
+    margin-bottom: 0.62em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.base-modal__content {
+  flex: 1;
+  overflow: auto;
+}

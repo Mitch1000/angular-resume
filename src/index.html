@@ -20,9 +20,16 @@
   </noscript>
 
   <div class="content" ng-click="isCloseNavigatorTriggered = true">
-    <div class="center-block canvas-container">
-      <center-header style="z-index:1000;"></center-header>
-      <div id="container"canvas-renderer confetti></div>
+    <center-header style="z-index:1000;"></center-header>
+
+    <div id="container"canvas-renderer confetti></div> 
+
+    <div id="notifications-vue-app"
+      data-unread-notifications-count="3"
+    >
+    </div>
+
+    <div id="credit-card-purchase-app">
     </div>
   </div>
 

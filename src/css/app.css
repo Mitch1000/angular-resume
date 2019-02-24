@@ -32,12 +32,19 @@ body {
   margin-top: 5% !important;
 }
 
-.vertical-align {
+.site-header-align {
   position: absolute;
-  top: 50%;
+  top: 75%;
   margin-top: -100px;
   left: 0;
   width: 100%;
+}
+
+
+@media (max-width: 1025px) {
+  .site-header-align{
+    top: 50%;
+  }
 }
 
 .center-block {

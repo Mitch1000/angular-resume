@@ -1,4 +1,4 @@
-module.exports = {
+export = {
     watch: true,
     entry: './src/app.js',
     output: {
